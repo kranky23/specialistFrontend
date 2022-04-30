@@ -1,0 +1,51 @@
+<app-side-bar></app-side-bar>
+<app-header></app-header>
+
+
+<div class="container main-area" style="margin-right: 0%; padding-right: 0%">
+  <div class="row" style="background-color: #e5ffd4; ">
+    <div class="col-sm-12" style="margin-left: 0%; margin-top: 2%; padding-right: 15%;">
+      <div class="alert alert-success text-center font-weight-bold">Patient Question Completion Sections</div>
+      <div class="alert w-50" style="background-color: #dddddd;">Patient has completed <span class="badge badge-danger">{{progressData.length}} Sections</span></div>
+      <!--            <div class="alert w-50" style="background-color: #dddddd;">Patient has completed upto <span class="badge badge-danger">{{ progressData.length === 0 ? 'Not Started Yet' : 'Section-' + progressData.length }}</span></div>-->
+      <form>
+        <div class="form-group w-25 m-2">
+          <label for="section">Select the section to see the Questions</label>
+          <select name="section" id="section" class="form-control" (change)="getQuestions($event)">
+            <option value="Please select any option">Please select any options</option>
+            <option *ngFor="let data of progressData" [value]="data.id"> {{ data.title }}</option>
+          </select>
+        </div>
+      </form>
+      <div id="accordion" class="w-75 ml-3">
+        <div class="alert alert-success" *ngIf="mappedQuestionAnswer">Following are the Questions and its Responses by patient.</div>
+        <div class="card" *ngFor="let data of mappedQuestionAnswer">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" [href]="'#collapse' + data.question.id">
+              {{ data.question.question }}
+            </a>
+          </div>
+          <div [id]="'collapse' + data.question.id" class="collapse show" data-parent="#accordion">
+            <div class="card-body">
+              <div *ngIf="data.response.response===1">
+                Not at All Likely
+              </div>
+              <div *ngIf="data.response.response===2">
+                Less Likely
+              </div>
+              <div *ngIf="data.response.response===3">
+                Neutral
+              </div>
+              <div *ngIf="data.response.response===4">
+                Likely
+              </div>
+              <div *ngIf="data.response.response===5">
+                Very Likely
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

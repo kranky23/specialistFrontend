@@ -1,0 +1,42 @@
+.container-align {
+  position: absolute;
+  left: 38.5%;
+
+}
+
+.main-content-container {
+  width: 77%;
+  margin-left: 23%;
+}
+
+.container-align-switch {
+  position: relative;
+  top: 150px;
+  left: 32.5%;
+  width: 25%;
+}
+
+.container-align-button {
+  position: relative;
+  top: 175px;
+  left: 36%;
+  width: 25%;
+}
+
+.container-align-link {
+  position: relative;
+  top: 200px;
+  left: 31%;
+  width: 25%;
+}
+
+.custom-form-label {
+  margin-left: 0.5rem;
+  color: grey;
+  font-size: 1.10rem;
+}
+
+.custom-icon {
+  color: grey;
+  font-size: 1.25rem;
+}

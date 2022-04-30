@@ -1,0 +1,52 @@
+<app-side-bar></app-side-bar>
+<app-header></app-header>
+
+<div class="main-container" style="margin-left: 45%; margin-top:5%">
+  <button class="btn btn-secondary vieworder" (click)="onMessagePatient()">Message</button>
+  <button class="btn btn-secondary vieworder" data-toggle="modal" data-target="#modalContactForm"  (click)="getAllPatient()" style="margin-left: 30%">View Patient List</button>
+</div>
+
+<!--Modal class for orderSet form-->
+<div class="modal fade" data-backdrop="false" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true" >
+  <div class="modal-dialog" role="document" style="margin-left:28%">
+    <div class="modal-content" style="width:750px;">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Section Order For Patient</h4>
+        <div class="alert alert-secondary" *ngIf="permissionText"><div class="badge badge-success">{{permissionText}}</div></div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <table class="table">
+          <caption>Patient List</caption>
+          <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>View Data</th>
+            <th>Permission</th>
+            <th>Comment</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let patient of patientData">
+            <!-- <td>{{todo.id}}</td> -->
+            <td>{{patient.fname}}</td>
+            <td>{{patient.lname}}</td>
+            <th><button [disabled]="!patient.count.match('2')" (click)="viewPatientData(patient.id)" class="btn btn-success">View Data</button></th>
+            <td><button [disabled]="!patient.count.match('0')" (click)="askPermission(patient.id)" class="btn btn-warning">Ask For Permission</button></td>
+            <td>
+              <div *ngIf="patient.count.match('0')" style="color:red">You have not asked for Permission Yet</div>
+              <div *ngIf="patient.count.match('1')" style="color:orangered">Permission Sent but not granted Yet</div>
+              <div *ngIf="patient.count.match('2')" style="color:green">Permission Granted</div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

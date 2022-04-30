@@ -1,0 +1,51 @@
+ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.sidebar {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 20px 0;
+}
+
+.left {
+  box-shadow: 1px 2px 2px #fcfcfc;
+  border: 1px solid #fcfcfc;
+}
+
+.sidebar ul li {
+  padding: 15px;
+}
+
+.sidebar ul li a {
+  color: black;
+  display: block;
+}
+
+.sidebar ul li:hover {
+  background: lightgrey;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: none;
+}
+
+.active-patient {
+  background-color: lightgrey;
+  color: red;
+}
+
+.patientlist{
+  background-color: #00a705c2;
+}
+.badge {
+  position: absolute;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
